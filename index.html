@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Portfolio</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* CSS Variables for Luxury Neutral Palette */
+        :root {
+            --bg-color: #FBFBF9; /* Soft warm white */
+            --text-main: #2C2C2C; /* Soft black / Charcoal */
+            --text-muted: #6B6B6B; /* Elegant gray */
+            --accent-color: #D4CFC9; /* Beige/Muted gray */
+            --section-bg: #FFFFFF; /* Pure white for contrast */
+        }
+
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        /* Layout Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+            opacity: 0; /* Starts hidden, animation reveals it */
+        }
+
+        /* Delay utilities for sequential loading */
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+
+        /* Sections */
+        section {
+            padding: 100px 0;
+            border-bottom: 1px solid var(--accent-color);
+        }
+        
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 50px;
+            color: var(--text-main);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        /* Hero / Header Section */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: var(--section-bg);
+            border-bottom: 1px solid var(--accent-color);
+        }
+
+        .profile-container {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-bottom: 30px;
+            border: 1px solid var(--accent-color);
+            padding: 5px;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .name {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* About Section */
+        .about-text {
+            text-align: justify;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+
+        /* Resume (Education & Experience) Section */
+        .resume-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        @media (min-width: 768px) {
+            .resume-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .resume-item h3 {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+            color: var(--text-main);
+        }
+
+        .resume-item .date {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .resume-item p {
+            color: var(--text-muted);
+        }
+
+        /* Current & Future Section */
+        .vision-block {
+            background-color: var(--section-bg);
+            padding: 40px;
+            border: 1px solid var(--accent-color);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .vision-block h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        /* Footer / Contact Section */
+        footer {
+            padding: 60px 0;
+            background-color: var(--text-main);
+            color: var(--bg-color);
+            text-align: center;
+        }
+
+        footer h2 {
+            color: var(--bg-color);
+            margin-bottom: 20px;
+        }
+
+        footer p {
+            color: var(--accent-color);
+            margin-bottom: 30px;
+        }
+
+        .social-links {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .social-links a {
+            color: var(--bg-color);
+            text-decoration: none;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container fade-in">
+            <div class="profile-container fade-in delay-1" style="margin: 0 auto 30px auto;">
+                <img src="Assets/ProfilePic.jpeg" alt="Profile Picture" class="profile-img">
+            </div>
+            <h1 class="name fade-in delay-2">Your Name</h1>
+            <p class="tagline fade-in delay-3">Your Professional Title or Tagline</p>
+        </div>
+    </header>
+
+    <section id="about" class="container fade-in">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-text">
+            <p>Welcome to my professional portfolio. I am a dedicated professional with a passion for excellence, continuous learning, and impactful work. Here you can write a short, elegant paragraph detailing your core values, your background, and what drives you both personally and professionally. Keep it clean, minimalist, and focused.</p>
+        </div>
+    </section>
+
+    <section id="resume" class="container fade-in">
+        <h2 class="section-title">Education & Experience</h2>
+        <div class="resume-grid">
+            
+            <div class="resume-column">
+                <div class="resume-item">
+                    <h3>Your University Name</h3>
+                    <span class="date">Degree Name, Graduation Year</span>
+                    <p>Details about your studies, honors, relevant coursework, or academic achievements that highlight your expertise.</p>
+                </div>
+            </div>
+
+            <div class="resume-column">
+                <div class="resume-item" style="margin-bottom: 30px;">
+                    <h3>Most Recent Job Title</h3>
+                    <span class="date">Company Name | Year - Present</span>
+                    <p>A brief description of your role, key responsibilities, and major accomplishments in a sophisticated manner.</p>
+                </div>
+                <div class="resume-item">
+                    <h3>Previous Job Title</h3>
+                    <span class="date">Company Name | Year - Year</span>
+                    <p>Another clean description of your previous professional experience showcasing your growth and skills.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="vision" class="container fade-in">
+        <h2 class="section-title">Current & Future</h2>
+        
+        <div class="vision-block">
+            <h3>Currently Exploring</h3>
+            <p style="color: var(--text-muted);">Detailing what you are working on right now. This could be a specific project, a new skill you are learning, or a current academic focus.</p>
+        </div>
+
+        <div class="vision-block">
+            <h3>Future Endeavors</h3>
+            <p style="color: var(--text-muted);">A forward-looking statement about your career goals, industry aspirations, and where you see your professional journey taking you in the coming years.</p>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container fade-in">
+            <h2>Get In Touch</h2>
+            <p>I am always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
+            <ul class="social-links">
+                <li><a href="mailto:your.email@example.com">Email</a></li>
+                <li><a href="#">LinkedIn</a></li>
+                <li><a href="#">GitHub</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                    }
+                });
+            });
+
+            const hiddenElements = document.querySelectorAll('.fade-in');
+            hiddenElements.forEach((el) => {
+                el.style.animationPlayState = 'paused';
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
