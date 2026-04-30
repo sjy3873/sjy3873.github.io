@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional Portfolio</title>
+    <title>Sean Yi - Professional Portfolio</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 
@@ -39,6 +39,33 @@
             letter-spacing: 1px;
         }
 
+        /* Navigation Bar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(251, 251, 249, 0.95);
+            padding: 20px 0;
+            z-index: 1000;
+            text-align: center;
+            border-bottom: 1px solid var(--accent-color);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--text-muted);
+        }
+
         /* Layout Container */
         .container {
             max-width: 900px;
@@ -60,10 +87,9 @@
 
         .fade-in {
             animation: fadeInUp 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-            opacity: 0; /* Starts hidden, animation reveals it */
+            opacity: 0;
         }
 
-        /* Delay utilities for sequential loading */
         .delay-1 { animation-delay: 0.2s; }
         .delay-2 { animation-delay: 0.4s; }
         .delay-3 { animation-delay: 0.6s; }
@@ -85,6 +111,7 @@
             color: var(--text-main);
             text-transform: uppercase;
             letter-spacing: 3px;
+            padding-top: 60px; /* Offset for fixed nav */
         }
 
         /* Hero / Header Section */
@@ -97,6 +124,14 @@
             text-align: center;
             background-color: var(--section-bg);
             border-bottom: 1px solid var(--accent-color);
+            padding-top: 60px; /* Offset for fixed nav */
+        }
+
+        .welcome-text {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-style: italic;
         }
 
         .profile-container {
@@ -122,17 +157,19 @@
         }
 
         .tagline {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: var(--text-muted);
             letter-spacing: 2px;
             text-transform: uppercase;
+            max-width: 600px;
         }
 
         /* About Section */
-        .about-text {
+        .about-text p {
             text-align: justify;
             font-size: 1.1rem;
             color: var(--text-muted);
+            margin-bottom: 20px;
         }
 
         /* Resume (Education & Experience) Section */
@@ -148,10 +185,24 @@
             }
         }
 
+        .resume-column h2 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-main);
+        }
+
+        .resume-item {
+            margin-bottom: 35px;
+        }
+
         .resume-item h3 {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             margin-bottom: 5px;
             color: var(--text-main);
+            font-weight: 600;
         }
 
         .resume-item .date {
@@ -164,6 +215,8 @@
 
         .resume-item p {
             color: var(--text-muted);
+            font-size: 0.95rem;
+            text-align: justify;
         }
 
         /* Current & Future Section */
@@ -182,7 +235,7 @@
 
         /* Footer / Contact Section */
         footer {
-            padding: 60px 0;
+            padding: 80px 0;
             background-color: var(--text-main);
             color: var(--bg-color);
             text-align: center;
@@ -221,20 +274,37 @@
 </head>
 <body>
 
-    <header>
+    <nav>
+        <a href="#header">Home</a>
+        <a href="#about">About</a>
+        <a href="#resume">Experience</a>
+        <a href="#vision">Future</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <header id="header">
         <div class="container fade-in">
+            <h3 class="welcome-text fade-in">Hello, Welcome!</h3>
             <div class="profile-container fade-in delay-1" style="margin: 0 auto 30px auto;">
-                <img src="Assets/ProfilePic.jpeg" alt="Profile Picture" class="profile-img">
+                <img src="ProfilePic.jpeg" alt="Sean Yi Profile Picture" class="profile-img">
             </div>
-            <h1 class="name fade-in delay-2">Your Name</h1>
-            <p class="tagline fade-in delay-3">Your Professional Title or Tagline</p>
+            <h1 class="name fade-in delay-2">Sean Yi</h1>
+            <p class="tagline fade-in delay-3">Accounting at Rutgers Business School - Honors College | Aspiring CPA</p>
         </div>
     </header>
 
     <section id="about" class="container fade-in">
         <h2 class="section-title">About Me</h2>
         <div class="about-text">
-            <p>Welcome to my professional portfolio. I am a dedicated professional with a passion for excellence, continuous learning, and impactful work. Here you can write a short, elegant paragraph detailing your core values, your background, and what drives you both personally and professionally. Keep it clean, minimalist, and focused.</p>
+            <p>Hi, it's nice to meet you! My name is Sean Yi, and I'm from Bergen County, NJ. I'm attending Rutgers University through the Business School and the Honors College, where I'm pursuing a degree in accounting and am on track to meet the 150-credit requirement for CPA eligibility.</p>
+            
+            <p>The Business School has helped develop my analytical thinking, real-world application, and professional development. Through my coursework and opportunities, I hope to continue to grow my knowledge and skills and transfer these principles to real business environments.</p>
+
+            <p>Alongside that, being a part of the Honors College has pushed me to approach my education and goals more thoughtfully, with intention and purpose. The Honors College fosters aspects such as interdisciplinary & experiential learning, innovation, wellness, and service. These values and experiences have shaped how I approach learning, leadership, and community, motivating me to contribute in meaningful ways.</p>
+
+            <p>In addition to my studies, a goal of mine is to build a career in New York - its energy, diversity, and opportunities excites me. I hope to find the right environment that allows me to continue growing and build my skills.</p>
+
+            <p>Outside of academics, I enjoy snowboarding, hiking, traveling, music/DJ, food, many outdoor activities, sports, and weight lifting.</p>
         </div>
     </section>
 
@@ -243,23 +313,41 @@
         <div class="resume-grid">
             
             <div class="resume-column">
+                <h2>Education</h2>
                 <div class="resume-item">
-                    <h3>Your University Name</h3>
-                    <span class="date">Degree Name, Graduation Year</span>
-                    <p>Details about your studies, honors, relevant coursework, or academic achievements that highlight your expertise.</p>
+                    <h3>Rutgers University</h3>
+                    <span class="date">Rutgers Business School & Honors College | Expected Graduation</span>
+                    <p><strong>Degree:</strong> Bachelor of Science, Accounting<br>
+                    <strong>GPA:</strong> 3.65<br>
+                    <strong>Honors:</strong> Rutgers Honors College, Dean's List, Dean's Scholarship, Beta Alpha Psi.</p>
+                </div>
+                
+                <div class="resume-item">
+                    <h3>Extracurriculars</h3>
+                    <span class="date">Rutgers University, NB</span>
+                    <p><strong>Beta Alpha Psi:</strong> Associate Member. Actively engaging in professional development, technical skill building, and networking.<br>
+                    <strong>Supply Chain Association:</strong> Member. Participating in corporate events and strategic academic planning.</p>
                 </div>
             </div>
 
             <div class="resume-column">
-                <div class="resume-item" style="margin-bottom: 30px;">
-                    <h3>Most Recent Job Title</h3>
-                    <span class="date">Company Name | Year - Present</span>
-                    <p>A brief description of your role, key responsibilities, and major accomplishments in a sophisticated manner.</p>
-                </div>
+                <h2>Experience</h2>
                 <div class="resume-item">
-                    <h3>Previous Job Title</h3>
-                    <span class="date">Company Name | Year - Year</span>
-                    <p>Another clean description of your previous professional experience showcasing your growth and skills.</p>
+                    <h3>Shift Lead</h3>
+                    <span class="date">Gongcha | Sep 2023 - Present</span>
+                    <p>Promoted to shift lead for exceptional customer service and leadership. Processed orders of $1000+ per shift, oversaw weekly inventory of $1200+, and trained and supervised 8+ employees while reinforcing standardized procedures.</p>
+                </div>
+
+                <div class="resume-item">
+                    <h3>Waiter</h3>
+                    <span class="date">Tori Ramen | Apr 2021 - Aug 2021</span>
+                    <p>Managed high-paced dining setting by serving and overseeing 5-8 tables simultaneously. Processed daily transactions of $500+ and provided excellent communication and menu accommodations.</p>
+                </div>
+
+                <div class="resume-item">
+                    <h3>Employee/Barista</h3>
+                    <span class="date">Tous les Jours | Dec 2020 - Apr 2021</span>
+                    <p>Monitored real-time inventory levels to minimize spoilage and optimized visual merchandising by strategically arranging goods to enhance customer engagement.</p>
                 </div>
             </div>
 
@@ -271,23 +359,22 @@
         
         <div class="vision-block">
             <h3>Currently Exploring</h3>
-            <p style="color: var(--text-muted);">Detailing what you are working on right now. This could be a specific project, a new skill you are learning, or a current academic focus.</p>
+            <p style="color: var(--text-muted);">Completing a specialized 18-credit honors curriculum, including a 6-credit research capstone and a social innovation forum centered on cross-disciplinary thinking and problem-solving.</p>
         </div>
 
         <div class="vision-block">
             <h3>Future Endeavors</h3>
-            <p style="color: var(--text-muted);">A forward-looking statement about your career goals, industry aspirations, and where you see your professional journey taking you in the coming years.</p>
+            <p style="color: var(--text-muted);">Working toward fulfilling the 150-credit requirement for CPA eligibility and striving to build a dynamic accounting and business career in New York City.</p>
         </div>
     </section>
 
     <footer id="contact">
         <div class="container fade-in">
             <h2>Get In Touch</h2>
-            <p>I am always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
+            <p>I am always open to discussing new opportunities, professional growth, and ways to contribute meaningfully.</p>
             <ul class="social-links">
-                <li><a href="mailto:your.email@example.com">Email</a></li>
-                <li><a href="#">LinkedIn</a></li>
-                <li><a href="#">GitHub</a></li>
+                <li><a href="mailto:seanyi73@gmail.com">Email</a></li>
+                <li><a href="https://www.linkedin.com/in/seanyi38/" target="_blank">LinkedIn</a></li>
             </ul>
         </div>
     </footer>
