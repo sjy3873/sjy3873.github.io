@@ -8,13 +8,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 
     <style>
-        /* CSS Variables for Luxury Neutral Palette */
+        /* CSS Variables for Dark Professional Palette */
         :root {
-            --bg-color: #FBFBF9; /* Soft warm white */
-            --text-main: #2C2C2C; /* Soft black / Charcoal */
-            --text-muted: #6B6B6B; /* Elegant gray */
-            --accent-color: #D4CFC9; /* Beige/Muted gray */
-            --section-bg: #FFFFFF; /* Pure white for contrast */
+            --bg-color: #121212; /* Deep charcoal background */
+            --section-bg: #1E1E1E; /* Slightly lighter gray for sections */
+            --text-main: #F0F0F0; /* Off-white for readability */
+            --text-muted: #A6A6A6; /* Soft gray for secondary text */
+            --accent-color: #333333; /* Dark gray for borders */
+            --highlight: #4DA8DA; /* Subtle professional blue for accents */
         }
 
         /* Reset and Base Styles */
@@ -39,17 +40,19 @@
             letter-spacing: 1px;
         }
 
-        /* Navigation Bar */
+        /* Navigation Bar - Glassmorphism Effect */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background-color: rgba(251, 251, 249, 0.95);
+            background-color: rgba(18, 18, 18, 0.85); /* Semi-transparent dark */
+            backdrop-filter: blur(10px); /* Frosted glass effect */
+            -webkit-backdrop-filter: blur(10px);
             padding: 20px 0;
             z-index: 1000;
             text-align: center;
             border-bottom: 1px solid var(--accent-color);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
 
         nav a {
@@ -60,10 +63,27 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             transition: color 0.3s ease;
+            position: relative;
         }
 
         nav a:hover {
-            color: var(--text-muted);
+            color: var(--highlight);
+        }
+
+        /* Animated underline for nav links */
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--highlight);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
         }
 
         /* Layout Container */
@@ -73,7 +93,7 @@
             padding: 0 20px;
         }
 
-        /* Animations */
+        /* Fade-In Animations */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -93,6 +113,18 @@
         .delay-1 { animation-delay: 0.2s; }
         .delay-2 { animation-delay: 0.4s; }
         .delay-3 { animation-delay: 0.6s; }
+
+        /* Floating Animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .floating {
+            display: inline-block;
+            animation: float 4s ease-in-out infinite;
+        }
 
         /* Sections */
         section {
@@ -122,14 +154,14 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            background-color: var(--section-bg);
+            background-color: var(--bg-color);
             border-bottom: 1px solid var(--accent-color);
-            padding-top: 60px; /* Offset for fixed nav */
+            padding-top: 60px;
         }
 
         .welcome-text {
             font-size: 1.5rem;
-            color: var(--text-muted);
+            color: var(--highlight);
             margin-bottom: 20px;
             font-style: italic;
         }
@@ -140,8 +172,14 @@
             border-radius: 50%;
             overflow: hidden;
             margin-bottom: 30px;
-            border: 1px solid var(--accent-color);
+            border: 2px solid var(--accent-color);
             padding: 5px;
+            background-color: var(--section-bg);
+            transition: border-color 0.4s ease;
+        }
+
+        .profile-container:hover {
+            border-color: var(--highlight);
         }
 
         .profile-img {
@@ -149,6 +187,11 @@
             height: 100%;
             object-fit: cover;
             border-radius: 50%;
+            transition: transform 0.4s ease;
+        }
+
+        .profile-container:hover .profile-img {
+            transform: scale(1.05);
         }
 
         .name {
@@ -172,7 +215,7 @@
             margin-bottom: 20px;
         }
 
-        /* Resume (Education & Experience) Section */
+        /* Resume Section */
         .resume-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -191,11 +234,23 @@
             text-align: center;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: var(--text-main);
+            color: var(--highlight);
         }
 
-        .resume-item {
-            margin-bottom: 35px;
+        /* Card Hover Effects */
+        .resume-item, .vision-block {
+            background-color: var(--section-bg);
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid var(--accent-color);
+            margin-bottom: 25px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .resume-item:hover, .vision-block:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            border-color: var(--highlight);
         }
 
         .resume-item h3 {
@@ -207,7 +262,7 @@
 
         .resume-item .date {
             font-size: 0.9rem;
-            color: var(--text-muted);
+            color: var(--highlight);
             font-style: italic;
             margin-bottom: 10px;
             display: block;
@@ -221,33 +276,35 @@
 
         /* Current & Future Section */
         .vision-block {
-            background-color: var(--section-bg);
-            padding: 40px;
-            border: 1px solid var(--accent-color);
-            margin-bottom: 30px;
             text-align: center;
         }
 
         .vision-block h3 {
             font-size: 1.5rem;
             margin-bottom: 15px;
+            color: var(--text-main);
         }
 
-        /* Footer / Contact Section */
+        .vision-block p {
+            color: var(--text-muted);
+        }
+
+        /* Footer Section */
         footer {
             padding: 80px 0;
-            background-color: var(--text-main);
-            color: var(--bg-color);
+            background-color: #0A0A0A; /* Even darker for footer */
+            color: var(--text-main);
             text-align: center;
+            border-top: 1px solid var(--accent-color);
         }
 
         footer h2 {
-            color: var(--bg-color);
+            color: var(--text-main);
             margin-bottom: 20px;
         }
 
         footer p {
-            color: var(--accent-color);
+            color: var(--text-muted);
             margin-bottom: 30px;
         }
 
@@ -259,7 +316,7 @@
         }
 
         .social-links a {
-            color: var(--bg-color);
+            color: var(--text-main);
             text-decoration: none;
             font-size: 1rem;
             letter-spacing: 1px;
@@ -268,7 +325,7 @@
         }
 
         .social-links a:hover {
-            color: var(--text-muted);
+            color: var(--highlight);
         }
     </style>
 </head>
@@ -284,9 +341,12 @@
 
     <header id="header">
         <div class="container fade-in">
-            <h3 class="welcome-text fade-in">Hello, Welcome!</h3>
+            <div class="fade-in">
+                <h3 class="welcome-text floating">Hello, Welcome!</h3>
+            </div>
+            
             <div class="profile-container fade-in delay-1" style="margin: 0 auto 30px auto;">
-                <img src="ProfilePic.jpeg" alt="Sean Yi Profile Picture" class="profile-img">
+                <img src="Assets/ProfilePic.jpeg" alt="Sean Yi Profile Picture" class="profile-img">
             </div>
             <h1 class="name fade-in delay-2">Sean Yi</h1>
             <p class="tagline fade-in delay-3">Accounting at Rutgers Business School - Honors College | Aspiring CPA</p>
@@ -359,12 +419,12 @@
         
         <div class="vision-block">
             <h3>Currently Exploring</h3>
-            <p style="color: var(--text-muted);">Completing a specialized 18-credit honors curriculum, including a 6-credit research capstone and a social innovation forum centered on cross-disciplinary thinking and problem-solving.</p>
+            <p>Completing a specialized 18-credit honors curriculum, including a 6-credit research capstone and a social innovation forum centered on cross-disciplinary thinking and problem-solving.</p>
         </div>
 
         <div class="vision-block">
             <h3>Future Endeavors</h3>
-            <p style="color: var(--text-muted);">Working toward fulfilling the 150-credit requirement for CPA eligibility and striving to build a dynamic accounting and business career in New York City.</p>
+            <p>Working toward fulfilling the 150-credit requirement for CPA eligibility and striving to build a dynamic accounting and business career in New York City.</p>
         </div>
     </section>
 
@@ -389,6 +449,7 @@
                 });
             });
 
+            // Target the fade-in elements (we exclude the floating one so it doesn't pause)
             const hiddenElements = document.querySelectorAll('.fade-in');
             hiddenElements.forEach((el) => {
                 el.style.animationPlayState = 'paused';
