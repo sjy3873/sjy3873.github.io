@@ -86,6 +86,28 @@
             width: 100%;
         }
 
+        /* Special App Button in Nav */
+        nav a.nav-app-btn {
+            background-color: #4CAF50; /* Green for finance/growth */
+            color: #121212; /* Dark text for contrast */
+            padding: 6px 16px;
+            border-radius: 4px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        nav a.nav-app-btn:hover {
+            background-color: #45a049;
+            color: #121212;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(76, 175, 80, 0.4);
+        }
+
+        /* This removes the blue underline animation specifically for this button */
+        nav a.nav-app-btn::after {
+            display: none;
+        }
+
         /* Layout Container */
         .container {
             max-width: 900px;
@@ -337,7 +359,7 @@
         <a href="#resume">Experience</a>
         <a href="#vision">Future</a>
         <a href="#contact">Contact</a>
-        <a href="calculator/index.html">App</a>
+        <a href="calculator/index.html">Investment Wealth Calculator</a>
     </nav>
 
     <header id="header">
